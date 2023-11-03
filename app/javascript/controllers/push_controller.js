@@ -3,12 +3,15 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   connect() {
     if ("Notification" in window) {
+      console.log('hi dog')
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           this.registerServiceWorker();
         } else if (permission === "denied") {
+          console.log('DENIED')
           console.warn("User rejected to allow notifications.");
         } else {
+          console.log('No PERMISSION')
           console.warn("User still didn't give an answer about notifications.");
         }
       });
