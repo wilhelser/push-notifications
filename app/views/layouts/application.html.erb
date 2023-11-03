@@ -12,10 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
   </head>
-  <% @decodedVapidPublicKey = Base64.urlsafe_decode64(ENV['DEFAULT_APPLICATION_SERVER_KEY']).bytes %>
   <script>
-    window.vapidPublicKey = new Uint8Array(<%= @decodedVapidPublicKey %>);
-    alert(<%= @decodedVapidPublicKey %>)
+    const vapidPublicKey = new Uint8Array(<%= Base64.urlsafe_decode64(ENV['DEFAULT_APPLICATION_SERVER_KEY']).bytes %>);
   </script>
   <body data-controller="push">
     <%= render "layouts/flash" %>

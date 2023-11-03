@@ -30,7 +30,7 @@ export default class extends Controller {
                 serviceWorkerRegistration.pushManager
                   .subscribe({
                     userVisibleOnly: true,
-                    applicationServerKey: window.vapidPublicKey,
+                    applicationServerKey: vapidPublicKey,
                   })
                   .then((subscription) => {
                     this.saveSubscription(subscription);
