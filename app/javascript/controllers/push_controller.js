@@ -6,7 +6,7 @@ export default class extends Controller {
 
     if ("Notification" in window) {
       console.log('hi dog')
-      enableNotificationButton.addEventListener("click", alert('hi'));
+      enableNotificationButton.addEventListener("click", Notification.requestPermission);
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           this.registerServiceWorker();
