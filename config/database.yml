@@ -13,6 +13,9 @@ test:
 
 production:
   <<: *default
-  database: push_production
-  username: push
-  password: <%= ENV["PUSH_DATABASE_PASSWORD"] %>
+  host     : app-3c42c1fb-6cc6-44f6-b7bf-127ffff59043-do-user-14941827-0.c.db.ondigitalocean.com
+  port     : 25060
+  username : igy6
+  password : <%= ENV["PUSH_DATABASE_PASSWORD"] %>
+  database : igy6
+  sslmode  : require
