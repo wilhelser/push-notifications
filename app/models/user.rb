@@ -6,14 +6,14 @@ class User < ApplicationRecord
   enum role: { user: 0, admin: 1 }
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable
 
   after_create_commit lambda {
                         broadcast_prepend_to "users", partial: "admin/users/user", locals: { user: self },
                                                       target: "users"
                       }
   after_create :update_user_verified_column_to_true
-  after_create :send_pin!
+  # after_create :send_pin!
 
   def update_user_verified_column_to_true
     UpdateUserJob.perform_now(self)
