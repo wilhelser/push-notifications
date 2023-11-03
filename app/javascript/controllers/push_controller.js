@@ -6,8 +6,7 @@ export default class extends Controller {
 
     if ("Notification" in window) {
       console.log('hi dog')
-      enableNotificationButton.addEventListener("click", Notification.requestPermission);
-      function requestPermission() {
+      enableNotificationButton.addEventListener("click", function(){
         Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           this.registerServiceWorker();
@@ -19,7 +18,8 @@ export default class extends Controller {
           console.warn("User still didn't give an answer about notifications.");
         }
       })
-    }
+      });
+      
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           this.registerServiceWorker();
