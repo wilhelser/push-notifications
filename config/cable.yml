@@ -1,16 +1,11 @@
 development:
   adapter: redis
-  username: default
-  password: <%= ENV['REDIS_PASS'] %>
-  host: db-redis-igy6-do-user-14941827-0.c.db.ondigitalocean.com
-  port: 25061
+  url: <%= ENV["REDIS_URL"] %>
 
 test:
   adapter: test
 
 production:
   adapter: redis
-  username: default
-  password: <%= ENV['REDIS_PASS'] %>
-  host: db-redis-igy6-do-user-14941827-0.c.db.ondigitalocean.com
-  port: 25061
+  url: <%= ENV["REDIS_URL"] %>
+

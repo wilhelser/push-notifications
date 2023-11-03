@@ -23,7 +23,12 @@ module Admin
 
       if @push_notification.save
         send_push_notification(@push_notification)
-        redirect_to admin_push_notifications_path, notice: "Push Notification was successfully created"
+        respond_to do |format|
+          format.html do
+            redirect_to admin_push_notifications_path, notice: "Push Notification was successfully created"
+          end
+          format.turbo_stream { flash.now[:notice] = "Push Notification was successfully created" }
+        end
       else
         render :new, status: :unprocessable_entity
       end
