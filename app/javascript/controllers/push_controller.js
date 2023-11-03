@@ -21,7 +21,7 @@ export default class extends Controller {
   registerServiceWorker() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
-        .register('service_worker.js')
+        .register('/service_worker.js')
         .then((serviceWorkerRegistration) => {
           serviceWorkerRegistration.pushManager
             .getSubscription()
