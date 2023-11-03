@@ -7,6 +7,19 @@ export default class extends Controller {
     if ("Notification" in window) {
       console.log('hi dog')
       enableNotificationButton.addEventListener("click", Notification.requestPermission);
+      function requestPermission() {
+        Notification.requestPermission().then((permission) => {
+        if (permission === "granted") {
+          this.registerServiceWorker();
+        } else if (permission === "denied") {
+          console.log('DENIED')
+          console.warn("User rejected to allow notifications.");
+        } else {
+          console.log('No PERMISSION')
+          console.warn("User still didn't give an answer about notifications.");
+        }
+      })
+    }
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           this.registerServiceWorker();
@@ -22,6 +35,8 @@ export default class extends Controller {
       console.warn("Push notifications not supported.");
     }
   }
+
+  
 
   registerServiceWorker() {
     if ("serviceWorker" in navigator) {
