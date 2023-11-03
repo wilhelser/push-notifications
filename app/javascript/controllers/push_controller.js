@@ -2,8 +2,11 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
+    var enableNotificationButton = document.getElementById('enable_notifications');
+
     if ("Notification" in window) {
       console.log('hi dog')
+      enableNotificationButton.addEventListener("click", Notification.requestPermission());
       Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
           this.registerServiceWorker();
@@ -19,7 +22,6 @@ export default class extends Controller {
       console.warn("Push notifications not supported.");
     }
   }
-
 
   registerServiceWorker() {
     if ("serviceWorker" in navigator) {
