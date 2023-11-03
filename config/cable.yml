@@ -1,11 +1,16 @@
 development:
   adapter: redis
-  url: redis://localhost:6379/1
+  username: default
+  password: <%= ENV.fetch("REDIS_PASS") %>
+  host: db-redis-igy6-do-user-14941827-0.c.db.ondigitalocean.com
+  port: 25061
 
 test:
   adapter: test
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: bazzar_production
+  username: default
+  password: <%= ENV.fetch("REDIS_PASS") %>
+  host: db-redis-igy6-do-user-14941827-0.c.db.ondigitalocean.com
+  port: 25061
