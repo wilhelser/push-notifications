@@ -6,10 +6,11 @@ export default class extends Controller {
 
     if ("Notification" in window) {
       console.log('hi dog')
+      let newthis = this
       enableNotificationButton.addEventListener("click", function(){
         Notification.requestPermission().then((permission) => {
         if (permission === "granted") {
-          this.registerServiceWorker();
+          newthis.registerServiceWorker();
         } else if (permission === "denied") {
           console.log('DENIED')
           console.warn("User rejected to allow notifications.");
