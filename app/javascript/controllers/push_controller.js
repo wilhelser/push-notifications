@@ -17,6 +17,7 @@ export default class extends Controller {
     }
   }
 
+
   registerServiceWorker() {
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker
@@ -29,9 +30,7 @@ export default class extends Controller {
                 serviceWorkerRegistration.pushManager
                   .subscribe({
                     userVisibleOnly: true,
-                    applicationServerKey: this.element.getAttribute(
-                      "data-application-server-key"
-                    ),
+                    applicationServerKey: window.vapidPublicKey,
                   })
                   .then((subscription) => {
                     this.saveSubscription(subscription);

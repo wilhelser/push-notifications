@@ -1,0 +1,17 @@
+{
+   "name": "IGY6 Notifications",
+    "short_name": "IGY6 Notifications",
+    "start_url": "/",
+    "icons": [
+     {
+      "src": "/images/icon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+    ]
+}

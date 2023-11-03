@@ -8,10 +8,16 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
   </head>
-  <body data-controller="push" data-application-server-key="<%= ENV['DEFAULT_APPLICATION_SERVER_KEY'] %>">
+  <% @decodedVapidPublicKey = Base64.urlsafe_decode64(ENV['DEFAULT_APPLICATION_SERVER_KEY']).bytes %>
+  <script>
+    window.vapidPublicKey = new Uint8Array(<%= @decodedVapidPublicKey %>);
+    alert(<%= @decodedVapidPublicKey %>)
+  </script>
+  <body data-controller="push">
     <%= render "layouts/flash" %>
     <%= render partial: "layouts/navbar" %>
     <%= yield %>
