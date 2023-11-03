@@ -94,7 +94,7 @@ module Admin
     end
 
     def push_notification_icon_url
-      ActionController::Base.helpers.image_url("note.png")
+      ActionController::Base.helpers.image_url("logo-icon.png")
     end
 
     def build_vapid_details
