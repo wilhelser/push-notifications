@@ -4,6 +4,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+config/localcerts
 
 /tmp/pids/*
 !/tmp/pids/
